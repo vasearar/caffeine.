@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import styles from './SyrupsSlider.module.css'
 
@@ -43,14 +43,20 @@ const SyrupsSlider = () => {
   ]
   const [currentIndex, setCurrentIndex] = useState(0)
   const [direction, setDirection] = useState(0)
+  const isMountedRef = useRef(true)
 
   useEffect(() => {
+    isMountedRef.current = true
     const interval = setInterval(() => {
-      setDirection(1)
-      setCurrentIndex((prev) => (prev + 1) % syrups.length)
+      if (isMountedRef.current) {
+        setDirection(1)
+        setCurrentIndex((prev) => (prev + 1) % syrups.length)
+      }
     }, 4000)
-
-    return () => clearInterval(interval)
+    return () => {
+      isMountedRef.current = false
+      clearInterval(interval)
+    }
   }, [])
 
   const slideVariants = {

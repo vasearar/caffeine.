@@ -68,16 +68,26 @@
   color: var(--white);
 }
 
-/* Responsive */
+/* Mobile: bottom-right so it doesn't cover hero; dropdown opens upward */
 @media (max-width: 768px) {
   .container {
-    top: 1.5rem;
-    left: 1.5rem;
+    top: auto;
+    left: auto;
+    bottom: 1.5rem;
+    right: 1.5rem;
   }
-  
+
+  .dropdown {
+    bottom: calc(100% + 0.5rem);
+    top: auto;
+    left: 0;
+    right: auto;
+  }
+
   .button {
-    padding: 0.625rem 1rem;
+    padding: 0.5rem 0.875rem;
     font-size: 0.75rem;
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.1);
   }
   
   .option {

@@ -67,7 +67,7 @@ const LanguageSwitcher = () => {
         </motion.svg>
       </motion.button>
 
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {isOpen && (
           <motion.div
             className={styles.dropdown}
