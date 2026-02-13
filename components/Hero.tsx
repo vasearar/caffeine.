@@ -113,8 +113,8 @@ const Hero = () => {
             }}
           >
             <Image
-              src="https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=2000&q=80"
-              alt="Premium black Sanremo coffee machine"
+              src="/main.png"
+              alt="caffeine. specialty coffee"
               fill
               priority
               className={styles.heroImage}

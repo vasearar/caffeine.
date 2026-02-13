@@ -13,31 +13,31 @@ const SyrupsSlider = () => {
     {
       id: 1,
       nameKey: 'vanilla',
-      image: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80',
+      image: '/vanilie.png',
       color: '#F5E6D3'
     },
     {
       id: 2,
       nameKey: 'caramel',
-      image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&q=80',
+      image: '/caramel.png',
       color: '#D4A574'
     },
     {
       id: 3,
       nameKey: 'hazelnut',
-      image: 'https://images.unsplash.com/photo-1606312619070-d48b4e001e46?w=800&q=80',
+      image: '/hazelnut.png',
       color: '#8B6F47'
     },
     {
       id: 4,
       nameKey: 'chocolate',
-      image: 'https://images.unsplash.com/photo-1606312619070-d48b4e001e46?w=800&q=80',
+      image: '/chocolat.png',
       color: '#3E2723'
     },
     {
       id: 5,
       nameKey: 'coconut',
-      image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&q=80',
+      image: '/coconut.png',
       color: '#F5F5DC'
     },
   ]

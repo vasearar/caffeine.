@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   title: 'caffeine. - Specialty Coffee Shop',
   description: 'Specialty coffee shop in Codru, Chisinau, Moldova. Featuring premium Sanremo equipment and a unique space-themed interior.',
   keywords: 'coffee shop, specialty coffee, Chisinau, Moldova, Sanremo, caffeine',
+  icons: {
+    icon: '/favicon.png',
+  },
 }
 
 export default function RootLayout({
