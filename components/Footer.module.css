@@ -1,0 +1,154 @@
+.footerSection {
+  background-color: var(--dark-gray);
+  color: var(--white);
+  padding: clamp(4rem, 8vw, 6rem) var(--spacing-md);
+  position: relative;
+}
+
+.footerContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.footerContent {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: clamp(2rem, 4vw, 3rem);
+  text-align: left;
+  margin-bottom: clamp(3rem, 6vw, 4rem);
+}
+
+.footerItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.footerLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  margin-bottom: 1.25rem;
+  color: var(--white);
+  opacity: 0.5;
+}
+
+.footerLink {
+  color: var(--white);
+  text-decoration: none;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  font-weight: 400;
+  transition: all 0.3s ease;
+  line-height: 1.8;
+  display: inline-block;
+  letter-spacing: 0.02em;
+}
+
+.footerLink:hover,
+.footerLink:focus {
+  opacity: 0.8;
+  transform: translateX(8px);
+}
+
+.footerText {
+  color: var(--white);
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+}
+
+.hoursTable {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hoursRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  cursor: default;
+  padding: 0.25rem 0;
+  border-radius: 2px;
+}
+
+.hoursDay {
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  font-weight: 400;
+  color: var(--white);
+  opacity: 0.9;
+  letter-spacing: 0.02em;
+  transition: opacity 0.3s ease;
+}
+
+.hoursRow:hover .hoursDay {
+  opacity: 1;
+}
+
+.hoursTime {
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+
+.hoursRow:hover .hoursTime {
+  opacity: 1;
+}
+
+.footerBottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.copyright {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--white);
+  opacity: 0.4;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.copyrightText {
+  position: relative;
+  display: inline-block;
+  cursor: default;
+}
+
+.copyrightUnderline {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 1px;
+  background-color: var(--white);
+  opacity: 0.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footerSection {
+    padding: clamp(3rem, 6vw, 4rem) var(--spacing-sm);
+  }
+  
+  .footerContent {
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 4vw, 2.5rem);
+  }
+  
+  .footerContent {
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .footerLink,
+  .footerText {
+    font-size: 0.875rem;
+  }
+}
