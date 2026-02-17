@@ -8,6 +8,7 @@
 .menuContainer {
   max-width: 1400px;
   margin: 0 auto;
+  will-change: transform, opacity;
 }
 
 .menuHeader {
@@ -113,6 +114,7 @@
   cursor: default;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
+  will-change: transform, opacity;
 }
 
 .menuItem:last-child {
@@ -179,6 +181,29 @@
 }
 
 /* Responsive */
+.menuNoteContainer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.separator {
+  width: 40px;
+  height: 2px;
+  background-color: var(--black);
+  opacity: 0.5;
+}
+
+.menuNote {
+  font-size: 0.875rem;
+  color: var(--dark-gray);
+  font-style: italic;
+  max-width: 80%;
+}
+
 @media (max-width: 1024px) {
   .menuGrid {
     gap: clamp(3rem, 6vw, 5rem);
@@ -189,12 +214,12 @@
   .menuSection {
     padding: clamp(4rem, 8vw, 6rem) var(--spacing-sm);
   }
-  
+
   .menuGrid {
     grid-template-columns: 1fr;
     gap: clamp(3rem, 6vw, 4rem);
   }
-  
+
   .menuHeader {
     margin-bottom: clamp(3rem, 6vw, 4rem);
   }

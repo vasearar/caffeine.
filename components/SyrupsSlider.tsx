@@ -8,7 +8,7 @@ import styles from './SyrupsSlider.module.css'
 
 const SyrupsSlider = () => {
   const { t } = useLanguage()
-  
+
   const syrups = [
     {
       id: 1,
@@ -47,7 +47,7 @@ const SyrupsSlider = () => {
 
   useEffect(() => {
     isMountedRef.current = true
-    const interval = setInterval(() => {
+    const timer = setTimeout(() => {
       if (isMountedRef.current) {
         setDirection(1)
         setCurrentIndex((prev) => (prev + 1) % syrups.length)
@@ -55,9 +55,9 @@ const SyrupsSlider = () => {
     }, 4000)
     return () => {
       isMountedRef.current = false
-      clearInterval(interval)
+      clearTimeout(timer)
     }
-  }, [])
+  }, [currentIndex, syrups.length])
 
   const slideVariants = {
     enter: (direction: number) => ({
@@ -120,10 +120,12 @@ const SyrupsSlider = () => {
                     src={syrups[currentIndex].image}
                     alt={t(syrups[currentIndex].nameKey)}
                     fill
+                    priority
+                    quality={85}
                     className={styles.slideImage}
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
-                  <div 
+                  <div
                     className={styles.imageOverlay}
                     style={{ backgroundColor: `${syrups[currentIndex].color}20` }}
                   />
@@ -155,25 +157,25 @@ const SyrupsSlider = () => {
               key={syrup.id}
               className={styles.syrupCard}
               onClick={() => goToSlide(index)}
-              whileHover={{ 
-                scale: 1.05, 
+              whileHover={{
+                scale: 1.05,
                 y: -5,
                 transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] }
               }}
-              whileTap={{ 
+              whileTap={{
                 scale: 0.95,
                 transition: { duration: 0.2 }
               }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ 
+              transition={{
                 delay: index * 0.1,
                 duration: 0.3,
                 ease: [0.16, 1, 0.3, 1]
               }}
             >
-              <div 
+              <div
                 className={styles.cardColor}
                 style={{ backgroundColor: syrup.color }}
               />

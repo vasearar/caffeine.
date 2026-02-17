@@ -6,7 +6,7 @@ import styles from './Menu.module.css'
 
 const Menu = () => {
   const { t } = useLanguage()
-  
+
   const drinks = [
     { nameKey: 'espresso', price: '30 / 45' },
     { nameKey: 'americano', price: '30 / 45' },
@@ -26,8 +26,14 @@ const Menu = () => {
   ]
 
   const pastries = [
-    { nameKey: 'croissant', price: '—' },
-    { nameKey: 'trianglePie', price: '—' },
+    { nameKey: 'sausageRoll', price: '50' },
+    { nameKey: 'sourCherryPastry', price: '50' },
+    { nameKey: 'cheesePastry', price: '50' },
+  ]
+
+  const weekendPastries = [
+    { nameKey: 'blackcurrantCroissant', price: '—' },
+    { nameKey: 'chocolateCroissant', price: '—' },
   ]
 
   const containerVariants = {
@@ -75,14 +81,14 @@ const Menu = () => {
 
         <div className={styles.menuGrid}>
           {/* Drinks Column */}
-          <motion.div 
-            className={styles.menuColumn} 
+          <motion.div
+            className={styles.menuColumn}
             variants={itemVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <motion.h3 
+            <motion.h3
               className={styles.menuHeading}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -105,12 +111,12 @@ const Menu = () => {
               ))}
             </div>
 
-            <motion.div 
+            <motion.div
               className={styles.menuSubsection}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ delay: 0.2 }} // Reduced delay for better responsiveness
             >
               <h4 className={styles.subsectionHeading}>{t('tea')}</h4>
               <div className={styles.menuItems}>
@@ -130,14 +136,14 @@ const Menu = () => {
           </motion.div>
 
           {/* Pastries Column */}
-          <motion.div 
-            className={styles.menuColumn} 
+          <motion.div
+            className={styles.menuColumn}
             variants={itemVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <motion.h3 
+            <motion.h3
               className={styles.menuHeading}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -150,6 +156,31 @@ const Menu = () => {
               {pastries.map((item, index) => (
                 <motion.div
                   key={index}
+                  className={styles.menuItem}
+                  variants={itemVariants}
+                  whileHover={{ x: 5, transition: { duration: 0.2 } }}
+                >
+                  <span className={styles.itemName}>{t(item.nameKey)}</span>
+                  <span className={styles.itemPrice}>{item.price}</span>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className={styles.menuNoteContainer}
+            >
+              <div className={styles.separator} />
+              <p className={styles.menuNote}>{t('weekendAvailability')}</p>
+            </motion.div>
+
+            <div className={styles.menuItems}>
+              {weekendPastries.map((item, index) => (
+                <motion.div
+                  key={`weekend-${index}`}
                   className={styles.menuItem}
                   variants={itemVariants}
                   whileHover={{ x: 5, transition: { duration: 0.2 } }}
