@@ -1,11 +1,22 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import styles from './Menu.module.css'
 
 const Menu = () => {
   const { t } = useLanguage()
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   const drinks = [
     { nameKey: 'espresso', price: '30 / 45' },
@@ -104,6 +115,8 @@ const Menu = () => {
                   className={styles.menuItem}
                   variants={itemVariants}
                   whileHover={{ x: 5, transition: { duration: 0.2 } }}
+                  whileInView={isMobile ? "visible" : undefined}
+                  viewport={isMobile ? { once: true, margin: "-10%" } : undefined}
                 >
                   <span className={styles.itemName}>{t(item.nameKey)}</span>
                   <span className={styles.itemPrice}>{item.price} MDL</span>
@@ -126,6 +139,8 @@ const Menu = () => {
                     className={styles.menuItem}
                     variants={itemVariants}
                     whileHover={{ x: 5, transition: { duration: 0.2 } }}
+                    whileInView={isMobile ? "visible" : undefined}
+                    viewport={isMobile ? { once: true, margin: "-10%" } : undefined}
                   >
                     <span className={styles.itemName}>{t(item.nameKey)}</span>
                     <span className={styles.itemPrice}>{item.price} MDL</span>
@@ -159,6 +174,8 @@ const Menu = () => {
                   className={styles.menuItem}
                   variants={itemVariants}
                   whileHover={{ x: 5, transition: { duration: 0.2 } }}
+                  whileInView={isMobile ? "visible" : undefined}
+                  viewport={isMobile ? { once: true, margin: "-10%" } : undefined}
                 >
                   <span className={styles.itemName}>{t(item.nameKey)}</span>
                   <span className={styles.itemPrice}>{item.price}</span>
@@ -184,6 +201,8 @@ const Menu = () => {
                   className={styles.menuItem}
                   variants={itemVariants}
                   whileHover={{ x: 5, transition: { duration: 0.2 } }}
+                  whileInView={isMobile ? "visible" : undefined}
+                  viewport={isMobile ? { once: true, margin: "-10%" } : undefined}
                 >
                   <span className={styles.itemName}>{t(item.nameKey)}</span>
                   <span className={styles.itemPrice}>{item.price}</span>
