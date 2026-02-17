@@ -2,13 +2,24 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import styles from './Hero.module.css'
 
 const Hero = () => {
   const { t } = useLanguage()
   const containerRef = useRef<HTMLDivElement>(null)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end start']
@@ -30,8 +41,8 @@ const Hero = () => {
   }
 
   const logoVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 80,
       scale: 0.8
     },
@@ -47,8 +58,8 @@ const Hero = () => {
   }
 
   const imageVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       scale: 1.2,
       filter: 'blur(30px) brightness(0.8)'
     },
@@ -71,20 +82,20 @@ const Hero = () => {
         initial="hidden"
         animate="visible"
       >
-        <motion.div 
-          className={styles.heroLeft} 
+        <motion.div
+          className={styles.heroLeft}
           variants={logoVariants}
-          style={{ y, opacity }}
+          style={isMobile ? {} : { y, opacity }}
         >
           <div className={styles.logoWrapper}>
-            <motion.h1 
+            <motion.h1
               className={styles.logo}
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
               caffeine.
             </motion.h1>
-            <motion.div 
+            <motion.div
               className={styles.logoLine}
               initial={{ width: 0, opacity: 0 }}
               animate={{ width: '100%', opacity: 1 }}
@@ -100,14 +111,14 @@ const Hero = () => {
             </motion.p>
           </div>
         </motion.div>
-        
-        <motion.div 
-          className={styles.heroRight} 
+
+        <motion.div
+          className={styles.heroRight}
           variants={imageVariants}
         >
-          <motion.div 
+          <motion.div
             className={styles.imageContainer}
-            style={{ 
+            style={{
               y: useTransform(scrollYProgress, [0, 1], ['0%', '40%']),
               scale
             }}
@@ -121,7 +132,7 @@ const Hero = () => {
               sizes="(max-width: 768px) 100vw, 50vw"
             />
             <div className={styles.imageOverlay} />
-            <motion.div 
+            <motion.div
               className={styles.imageGradient}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -130,8 +141,8 @@ const Hero = () => {
           </motion.div>
         </motion.div>
       </motion.div>
-      
-      <motion.div 
+
+      <motion.div
         className={styles.scrollIndicator}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -142,7 +153,7 @@ const Hero = () => {
           transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
         >
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <path d="M7 13l5 5 5-5M7 6l5 5 5-5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M7 13l5 5 5-5M7 6l5 5 5-5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </motion.div>
       </motion.div>

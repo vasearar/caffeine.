@@ -74,8 +74,8 @@ const Menu = () => {
     <section className={styles.menuSection}>
       <motion.div
         className={styles.menuContainer}
-        variants={containerVariants}
-        initial="hidden"
+        variants={isMobile ? { visible: { opacity: 1 } } : containerVariants}
+        initial={isMobile ? "visible" : "hidden"}
         whileInView="visible"
         viewport={{ once: true, margin: '-150px' }}
       >

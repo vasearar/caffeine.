@@ -143,8 +143,8 @@
 
   .imageContainer {
     min-height: 50vh;
-    height: 140%;
-    top: -40%;
+    height: 160%;
+    top: -30%;
   }
 }
 
@@ -159,8 +159,8 @@
 
   .imageContainer {
     min-height: 60vh;
-    height: 140%;
-    top: -40%;
+    height: 160%;
+    top: -30%;
   }
 
   .logo {
@@ -176,7 +176,7 @@
 
   .imageContainer {
     min-height: 65vh;
-    height: 140%;
-    top: -40%;
+    height: 160%;
+    top: -30%;
   }
 }
