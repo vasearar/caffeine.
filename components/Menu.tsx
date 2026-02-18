@@ -108,7 +108,12 @@ const Menu = () => {
             >
               {t('drinks')}
             </motion.h3>
-            <div className={styles.menuItems}>
+            <motion.div
+              className={styles.menuItems}
+              variants={{
+                visible: { transition: { staggerChildren: 0.05, delayChildren: 0.4 } }
+              }}
+            >
               {drinks.map((item, index) => (
                 <motion.div
                   key={index}
@@ -122,7 +127,7 @@ const Menu = () => {
                   <span className={styles.itemPrice}>{item.price} MDL</span>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
 
             <motion.div
               className={styles.menuSubsection}
@@ -132,7 +137,12 @@ const Menu = () => {
               transition={{ delay: 0.2 }} // Reduced delay for better responsiveness
             >
               <h4 className={styles.subsectionHeading}>{t('tea')}</h4>
-              <div className={styles.menuItems}>
+              <motion.div
+                className={styles.menuItems}
+                variants={{
+                  visible: { transition: { staggerChildren: 0.05, delayChildren: 0.4 } }
+                }}
+              >
                 {teas.map((item, index) => (
                   <motion.div
                     key={index}
@@ -146,7 +156,7 @@ const Menu = () => {
                     <span className={styles.itemPrice}>{item.price} MDL</span>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
           </motion.div>
 
@@ -167,7 +177,12 @@ const Menu = () => {
             >
               {t('pastries')}
             </motion.h3>
-            <div className={styles.menuItems}>
+            <motion.div
+              className={styles.menuItems}
+              variants={{
+                visible: { transition: { staggerChildren: 0.05, delayChildren: 0.5 } }
+              }}
+            >
               {pastries.map((item, index) => (
                 <motion.div
                   key={index}
@@ -181,7 +196,7 @@ const Menu = () => {
                   <span className={styles.itemPrice}>{item.price}</span>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0 }}
@@ -194,7 +209,12 @@ const Menu = () => {
               <p className={styles.menuNote}>{t('weekendAvailability')}</p>
             </motion.div>
 
-            <div className={styles.menuItems}>
+            <motion.div
+              className={styles.menuItems}
+              variants={{
+                visible: { transition: { staggerChildren: 0.05, delayChildren: 0.6 } }
+              }}
+            >
               {weekendPastries.map((item, index) => (
                 <motion.div
                   key={`weekend-${index}`}
@@ -208,7 +228,7 @@ const Menu = () => {
                   <span className={styles.itemPrice}>{item.price}</span>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </motion.div>

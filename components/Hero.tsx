@@ -85,9 +85,11 @@ const Hero = () => {
         <motion.div
           className={styles.heroLeft}
           variants={logoVariants}
-          style={isMobile ? {} : { y, opacity }}
         >
-          <div className={styles.logoWrapper}>
+          <motion.div
+            className={styles.logoWrapper}
+            style={isMobile ? {} : { y, opacity }}
+          >
             <motion.h1
               className={styles.logo}
               whileHover={{ scale: 1.02 }}
@@ -109,7 +111,7 @@ const Hero = () => {
             >
               {t('tagline')}
             </motion.p>
-          </div>
+          </motion.div>
         </motion.div>
 
         <motion.div
